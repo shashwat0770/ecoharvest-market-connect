@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,17 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// EcoHarvest custom colors
+				eco: {
+					'leaf': '#4D7C0F',
+					'leaf-light': '#84CC16',
+					'earth': '#78350F',
+					'earth-light': '#92400E',
+					'wheat': '#CA8A04',
+					'wheat-light': '#EAB308',
+					'cloud': '#F3F4F6',
+					'stone': '#1C1917',
 				}
 			},
 			borderRadius: {
@@ -84,11 +96,25 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'fade-out': {
+					'0%': { opacity: '1' },
+					'100%': { opacity: '0' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.4s ease-out',
+				'fade-in-slow': 'fade-in 0.6s ease-out',
+				'fade-out': 'fade-out 0.3s ease-out'
+			},
+			backgroundImage: {
+				'grain-pattern': "url('/grain-texture.png')",
 			}
 		}
 	},
