@@ -25,7 +25,7 @@ const products = [
     id: 3,
     name: 'Biodegradable Utensils',
     price: 599,
-    image: 'https://images.unsplash.com/photo-1563536601-7d6854732a6e?q=80&w=1374&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?q=80&w=1374&auto=format&fit=crop',
     category: 'Kitchen',
     badge: 'Bestseller'
   },

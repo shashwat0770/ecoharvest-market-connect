@@ -12,7 +12,7 @@ const roles = [
     description: 'List your crop residue for sale, manage your transactions, and get paid for agricultural waste.',
     benefits: ['Direct fair pricing', 'Simple listing process', 'Environmental impact', 'Reduced disposal costs'],
     color: 'bg-eco-leaf',
-    path: '/farmer/dashboard',
+    path: '/login',
     iconColor: 'text-eco-leaf'
   },
   {
@@ -22,7 +22,7 @@ const roles = [
     description: 'Connect with farmers, schedule pickup, and transport stubble to processing facilities.',
     benefits: ['Efficient routing', 'Multiple collection points', 'Guaranteed volumes', 'Digital documentation'],
     color: 'bg-eco-earth',
-    path: '/trader/dashboard',
+    path: '/login',
     iconColor: 'text-eco-earth'
   },
   {
@@ -32,7 +32,7 @@ const roles = [
     description: 'Purchase stubble in bulk for eco-friendly ethanol production and other sustainable initiatives.',
     benefits: ['Verified sources', 'Quality guarantees', 'Volume discounts', 'Sustainability reporting'],
     color: 'bg-eco-wheat',
-    path: '/investor/dashboard',
+    path: '/login',
     iconColor: 'text-eco-wheat'
   }
 ];
