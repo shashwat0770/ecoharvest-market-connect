@@ -1,6 +1,6 @@
 # 🌾 EcoHarvestMarket
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/60efb279-3506-4d98-94e7-1e6f16816ef5/deploy-status)](https://eco-harvest-market.netlify.app/)
+[![Netlify Status](https://www.google.com/imgres?q=netlify%20logo&imgurl=https%3A%2F%2Flogosandtypes.com%2Fwp-content%2Fuploads%2F2023%2F03%2FNetlify.png&imgrefurl=https%3A%2F%2Flogosandtypes.com%2Falphabet%2Fletter-n%2Fnetlify%2F&docid=2VUH7Pp2iLytcM&tbnid=QwqCEtwkZ0V7eM&vet=12ahUKEwjasNXV0KyNAxVcSGwGHX-SB1MQM3oECGUQAA..i&w=2000&h=2000&hcb=2&ved=2ahUKEwjasNXV0KyNAxVcSGwGHX-SB1MQM3oECGUQAA)](https://eco-harvest-market.netlify.app/)
 
 EcoHarvestMarket is an innovative web platform designed to empower farmers, traders, investors, and environmentally conscious consumers. By connecting all stakeholders of crop residue (stubble) recycling, it aims to reduce agricultural waste and promote sustainable practices.
 
