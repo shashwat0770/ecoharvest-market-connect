@@ -17,7 +17,7 @@ const products = [
     id: 2,
     name: 'Stubble Fiber Planter',
     price: 1495,
-    image: 'https://images.unsplash.com/photo-1623910270900-17d8a0c0f1ec?q=80&w=1374&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1374&auto=format&fit=crop',
     category: 'Home & Garden',
     badge: 'New'
   },
@@ -25,7 +25,7 @@ const products = [
     id: 3,
     name: 'Biodegradable Utensils',
     price: 599,
-    image: 'https://images.unsplash.com/photo-1610423686997-84c1e01bc2bd?q=80&w=1374&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1563536601-7d6854732a6e?q=80&w=1374&auto=format&fit=crop',
     category: 'Kitchen',
     badge: 'Bestseller'
   },

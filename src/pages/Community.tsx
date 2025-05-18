@@ -20,7 +20,7 @@ const challenges = [
     description: 'Plant at least 5 trees in your community this month.',
     participants: 423,
     badge: 'Ongoing',
-    image: 'https://images.unsplash.com/photo-1636820804842-339ade34a80e?q=80&w=1374&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=1470&auto=format&fit=crop'
   },
   {
     id: 3,

@@ -147,22 +147,7 @@ const Login = () => {
                 </button>
               </div>
               
-              <div className="mt-8 border-t pt-6">
-                <p className="text-center text-sm text-muted-foreground mb-4">
-                  Or continue with
-                </p>
-                <div className="grid grid-cols-3 gap-3">
-                  <button className="flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium hover:bg-muted/50">
-                    Google
-                  </button>
-                  <button className="flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium hover:bg-muted/50">
-                    Facebook
-                  </button>
-                  <button className="flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium hover:bg-muted/50">
-                    Apple
-                  </button>
-                </div>
-              </div>
+              {/* "Or continue with" section removed as requested */}
             </div>
           </div>
         </div>

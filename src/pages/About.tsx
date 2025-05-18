@@ -81,27 +81,8 @@ const About = () => {
             </div>
           </div>
         </section>
-
-        <section className="py-16 bg-muted/30">
-          <div className="container">
-            <h2 className="text-3xl font-bold mb-8 text-center">Our Team</h2>
-            <p className="text-lg text-center max-w-3xl mx-auto mb-12">
-              We're a diverse team of environmentalists, technologists, and agricultural experts 
-              united by our passion for sustainable solutions.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-              {[1, 2, 3, 4].map((index) => (
-                <div key={index} className="eco-card overflow-hidden">
-                  <div className="h-64 bg-muted/50"></div>
-                  <div className="p-4">
-                    <h3 className="font-semibold">Team Member {index}</h3>
-                    <p className="text-sm text-muted-foreground">Position</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        
+        {/* "Our team" section removed as requested */}
       </main>
       <Footer />
     </div>
