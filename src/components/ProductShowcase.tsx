@@ -8,7 +8,7 @@ const products = [
   {
     id: 1,
     name: 'Eco-Paper Notebook',
-    price: 12.99,
+    price: 899,
     image: 'https://images.unsplash.com/photo-1572726729207-a78d6feb18d7?q=80&w=1374&auto=format&fit=crop',
     category: 'Stationery',
     badge: 'Popular'
@@ -16,7 +16,7 @@ const products = [
   {
     id: 2,
     name: 'Stubble Fiber Planter',
-    price: 24.95,
+    price: 1495,
     image: 'https://images.unsplash.com/photo-1623910270900-17d8a0c0f1ec?q=80&w=1374&auto=format&fit=crop',
     category: 'Home & Garden',
     badge: 'New'
@@ -24,7 +24,7 @@ const products = [
   {
     id: 3,
     name: 'Biodegradable Utensils',
-    price: 8.50,
+    price: 599,
     image: 'https://images.unsplash.com/photo-1610423686997-84c1e01bc2bd?q=80&w=1374&auto=format&fit=crop',
     category: 'Kitchen',
     badge: 'Bestseller'
@@ -32,7 +32,7 @@ const products = [
   {
     id: 4,
     name: 'Compressed Stubble Fuel',
-    price: 18.75,
+    price: 1299,
     image: 'https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?q=80&w=1470&auto=format&fit=crop',
     category: 'Energy',
     badge: 'Eco-friendly'
@@ -77,7 +77,7 @@ const ProductShowcase = () => {
                 <div className="text-xs text-muted-foreground mb-1">{product.category}</div>
                 <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
                 <div className="flex justify-between items-center">
-                  <span className="font-medium">${product.price.toFixed(2)}</span>
+                  <span className="font-medium">₹{product.price}</span>
                   <Button size="sm" className="bg-eco-leaf hover:bg-eco-leaf/90">
                     <ShoppingCartIcon size={16} className="mr-1" /> Add
                   </Button>

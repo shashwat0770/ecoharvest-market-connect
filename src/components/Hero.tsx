@@ -26,7 +26,7 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <Link to="/signup">
+              <Link to="/login">
                 <Button size="lg" className="bg-eco-leaf hover:bg-eco-leaf/90">
                   Get Started
                 </Button>
