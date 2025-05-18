@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -28,7 +27,7 @@ const products = [
     id: 2,
     name: 'Stubble Fiber Planter',
     price: 1495,
-    image: 'https://images.unsplash.com/photo-1623910270900-17d8a0c0f1ec?q=80&w=1374&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1374&auto=format&fit=crop',
     category: 'Home & Garden',
     badge: 'New',
     description: 'Biodegradable planters made from compressed stubble fibers, perfect for starting seedlings or small plants.'
@@ -37,7 +36,7 @@ const products = [
     id: 3,
     name: 'Biodegradable Utensils',
     price: 599,
-    image: 'https://images.unsplash.com/photo-1610423686997-84c1e01bc2bd?q=80&w=1374&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?q=80&w=1374&auto=format&fit=crop',
     category: 'Kitchen',
     badge: 'Bestseller',
     description: 'Set of 24 compostable utensils made from agricultural waste, perfect for parties or everyday use.'
