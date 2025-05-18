@@ -75,21 +75,6 @@ By using this platform, all participants contribute to environmental sustainabil
 
 ---
 
-## 🖼 Website Screenshots
-
-### 📸 Home Page
-![Home Page](./screenshots/Screenshot%202025-05-18%20140341.png)
-
-### 📸 Farmer Dashboard
-![Farmer Dashboard](./screenshots/Screenshot%202025-05-18%20140400.png)
-
-### 📸 Product Store
-![Product Store](./screenshots/Screenshot%202025-05-18%20140422.png)
-
-### 📸 Leaderboard & Challenges
-![Leaderboard](./screenshots/Screenshot%202025-05-18%20140440.png)
-
-> _All screenshots are from the deployed version of the website._
 
 ---
 
