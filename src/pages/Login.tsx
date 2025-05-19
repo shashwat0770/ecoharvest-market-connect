@@ -1,13 +1,92 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 import { LeafIcon } from '@/assets/icons';
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/components/ui/sonner";
+import { Input } from "@/components/ui/input";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    userType: 'Farmer'
+  });
+  const navigate = useNavigate();
+
+  // Check if user is already logged in
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (data.session) {
+        navigate('/');
+      }
+    };
+    checkSession();
+  }, [navigate]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+  
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password
+      });
+      
+      if (error) throw error;
+      
+      toast.success("Successfully logged in!");
+      navigate('/');
+    } catch (error) {
+      toast.error(error.message || "Failed to log in");
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      // Store first name, last name, and user type in metadata
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            user_type: formData.userType
+          }
+        }
+      });
+      
+      if (error) throw error;
+
+      toast.success("Registration successful! Please check your email to verify your account.");
+      setIsLogin(true);
+    } catch (error) {
+      toast.error(error.message || "Failed to create account");
+    } finally {
+      setLoading(false);
+    }
+  };
   
   const toggleForm = () => {
     setIsLogin(!isLogin);
@@ -28,23 +107,31 @@ const Login = () => {
               </h1>
               
               {isLogin ? (
-                <form className="space-y-4">
+                <form onSubmit={handleLogin} className="space-y-4">
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                    <input
+                    <Input
                       type="email"
                       id="email"
-                      className="w-full px-3 py-2 border rounded-md"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full"
                       placeholder="you@example.com"
+                      required
                     />
                   </div>
                   <div>
                     <label htmlFor="password" className="block text-sm font-medium mb-1">Password</label>
-                    <input
+                    <Input
                       type="password"
                       id="password"
-                      className="w-full px-3 py-2 border rounded-md"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      className="w-full"
                       placeholder="••••••••"
+                      required
                     />
                   </div>
                   <div className="flex items-center justify-between">
@@ -65,58 +152,82 @@ const Login = () => {
                       </a>
                     </div>
                   </div>
-                  <Button className="w-full bg-eco-leaf hover:bg-eco-leaf/90">
-                    Sign in
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-eco-leaf hover:bg-eco-leaf/90" 
+                    disabled={loading}
+                  >
+                    {loading ? 'Signing in...' : 'Sign in'}
                   </Button>
                 </form>
               ) : (
-                <form className="space-y-4">
+                <form onSubmit={handleSignup} className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="first-name" className="block text-sm font-medium mb-1">First name</label>
-                      <input
+                      <label htmlFor="firstName" className="block text-sm font-medium mb-1">First name</label>
+                      <Input
                         type="text"
-                        id="first-name"
-                        className="w-full px-3 py-2 border rounded-md"
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        className="w-full"
+                        required
                       />
                     </div>
                     <div>
-                      <label htmlFor="last-name" className="block text-sm font-medium mb-1">Last name</label>
-                      <input
+                      <label htmlFor="lastName" className="block text-sm font-medium mb-1">Last name</label>
+                      <Input
                         type="text"
-                        id="last-name"
-                        className="w-full px-3 py-2 border rounded-md"
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        className="w-full"
+                        required
                       />
                     </div>
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                    <input
+                    <Input
                       type="email"
                       id="email"
-                      className="w-full px-3 py-2 border rounded-md"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full"
                       placeholder="you@example.com"
+                      required
                     />
                   </div>
                   <div>
                     <label htmlFor="password" className="block text-sm font-medium mb-1">Password</label>
-                    <input
+                    <Input
                       type="password"
                       id="password"
-                      className="w-full px-3 py-2 border rounded-md"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      className="w-full"
                       placeholder="••••••••"
+                      required
                     />
                   </div>
                   <div>
-                    <label htmlFor="user-type" className="block text-sm font-medium mb-1">I am a</label>
+                    <label htmlFor="userType" className="block text-sm font-medium mb-1">I am a</label>
                     <select
-                      id="user-type"
+                      id="userType"
+                      name="userType"
+                      value={formData.userType}
+                      onChange={handleChange}
                       className="w-full px-3 py-2 border rounded-md"
+                      required
                     >
-                      <option>Farmer</option>
-                      <option>Trader</option>
-                      <option>Investor</option>
-                      <option>Consumer</option>
+                      <option value="Farmer">Farmer</option>
+                      <option value="Trader">Trader</option>
+                      <option value="Investor">Investor</option>
+                      <option value="Consumer">Consumer</option>
                     </select>
                   </div>
                   <div className="flex items-center">
@@ -125,13 +236,18 @@ const Login = () => {
                       name="terms"
                       type="checkbox"
                       className="h-4 w-4 rounded border-gray-300"
+                      required
                     />
                     <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
                       I agree to the <a href="#" className="text-eco-leaf hover:underline">Terms and Conditions</a>
                     </label>
                   </div>
-                  <Button className="w-full bg-eco-leaf hover:bg-eco-leaf/90">
-                    Create account
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-eco-leaf hover:bg-eco-leaf/90"
+                    disabled={loading}
+                  >
+                    {loading ? 'Creating account...' : 'Create account'}
                   </Button>
                 </form>
               )}
@@ -146,8 +262,6 @@ const Login = () => {
                     : "Already have an account? Sign in"}
                 </button>
               </div>
-              
-              {/* "Or continue with" section removed as requested */}
             </div>
           </div>
         </div>

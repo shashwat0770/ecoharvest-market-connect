@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import { LeafIcon, TruckIcon, CoinsIcon } from '@/assets/icons';
+import { useAuth } from '@/context/AuthContext';
 
 const roles = [
   {
@@ -13,6 +14,7 @@ const roles = [
     benefits: ['Direct fair pricing', 'Simple listing process', 'Environmental impact', 'Reduced disposal costs'],
     color: 'bg-eco-leaf',
     path: '/login',
+    dashboardPath: '/farmer/dashboard',
     iconColor: 'text-eco-leaf'
   },
   {
@@ -23,6 +25,7 @@ const roles = [
     benefits: ['Efficient routing', 'Multiple collection points', 'Guaranteed volumes', 'Digital documentation'],
     color: 'bg-eco-earth',
     path: '/login',
+    dashboardPath: '/trader/dashboard',
     iconColor: 'text-eco-earth'
   },
   {
@@ -33,11 +36,14 @@ const roles = [
     benefits: ['Verified sources', 'Quality guarantees', 'Volume discounts', 'Sustainability reporting'],
     color: 'bg-eco-wheat',
     path: '/login',
+    dashboardPath: '/investor/dashboard',
     iconColor: 'text-eco-wheat'
   }
 ];
 
 const RoleCards = () => {
+  const { user } = useAuth();
+
   return (
     <section className="py-16 bg-gradient-to-b from-background to-muted/30">
       <div className="container">
@@ -77,11 +83,11 @@ const RoleCards = () => {
               </div>
               
               <div className="mt-auto">
-                <Link to={role.path} className="w-full">
+                <Link to={user ? role.dashboardPath : role.path} className="w-full">
                   <Button 
                     className={`w-full ${role.color === 'bg-eco-leaf' ? 'bg-eco-leaf hover:bg-eco-leaf/90' : role.color === 'bg-eco-earth' ? 'bg-eco-earth hover:bg-eco-earth/90' : 'bg-eco-wheat hover:bg-eco-wheat/90'} text-white`}
                   >
-                    Join as {role.title}
+                    {user ? `Go to ${role.title} Dashboard` : `Join as ${role.title}`}
                   </Button>
                 </Link>
               </div>
