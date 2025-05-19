@@ -1,13 +1,12 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 import { LeafIcon } from '@/assets/icons';
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
 import { Input } from "@/components/ui/input";
+import { useAuth } from '@/context/AuthContext';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,17 +19,14 @@ const Login = () => {
     userType: 'Farmer'
   });
   const navigate = useNavigate();
+  const { user, signIn, signUp } = useAuth();
 
   // Check if user is already logged in
   useEffect(() => {
-    const checkSession = async () => {
-      const { data } = await supabase.auth.getSession();
-      if (data.session) {
-        navigate('/');
-      }
-    };
-    checkSession();
-  }, [navigate]);
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,10 +40,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: formData.email,
-        password: formData.password
-      });
+      const { error } = await signIn(formData.email, formData.password);
       
       if (error) throw error;
       
@@ -64,22 +57,19 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      // Store first name, last name, and user type in metadata
-      const { data, error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-        options: {
-          data: {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            user_type: formData.userType
-          }
+      const { error } = await signUp(
+        formData.email, 
+        formData.password,
+        {
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          user_type: formData.userType
         }
-      });
+      );
       
       if (error) throw error;
 
-      toast.success("Registration successful! Please check your email to verify your account.");
+      toast.success("Registration successful! You can now log in.");
       setIsLogin(true);
     } catch (error) {
       toast.error(error.message || "Failed to create account");
